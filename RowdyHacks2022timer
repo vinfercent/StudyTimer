@@ -1,0 +1,29 @@
+# import the time module & webbrowser
+import time
+import webbrowser
+
+#45 minutes is 2700 seconds
+t = int(input('Enter the time, in seconds, you would like to study: '))
+
+#url link that opens when t = 0
+url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
+# the countdown.
+def countdown(t):
+    
+    print('45 minute study timer has begun!')
+    while t:
+        mins, secs = divmod(t, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        t -= 1
+        
+        #when the timer runs out, open the url
+        if t == 0:
+            webbrowser.open_new(url)
+
+
+  
+# function call
+countdown(int(t))
